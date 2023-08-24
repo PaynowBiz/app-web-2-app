@@ -49,6 +49,7 @@ public class BaseUtil {
 				sb.append("paynow://paynowbiz.tosspayments.com/"); //미인증APP스킴
 			}
 			sb.append(param.get("url"));
+			param.remove("url"); //param 에서 url 제거
 			
 			result = sb.toString() + "?" + getParam(param) + "&data=" + URLEncoder.encode(data, "UTF-8") + "&hmac=" + URLEncoder.encode(hmac, "UTF-8");
 			

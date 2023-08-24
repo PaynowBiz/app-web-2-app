@@ -90,6 +90,7 @@ public class AppToAppController extends Construct {
 			param.put("mertid",             Constants.PAYNOWBIZ_MERTID);
 			param.put("type",               map.get("cancel").getType());
 			param.put("reqtype",            map.get("cancel").getReqtype());
+			param.put("url",                map.get("cancel").getUrl());
 			
 			//암호화 ㅇ 
 			paramEnc.put("certkey",         Constants.PAYNOWBIZ_CERTKEY);
@@ -132,6 +133,7 @@ public class AppToAppController extends Construct {
 			param.put("partnercd",          map.get("normal").getPartnercd());
 			param.put("partnernm",          map.get("normal").getPartnernm());
 			param.put("amount_modify",      map.get("normal").getAmount_modify());
+			param.put("url",                map.get("normal").getUrl());
 			
 			//암호화 ㅇ 
 			paramEnc.put("certkey",         Constants.PAYNOWBIZ_CERTKEY);
