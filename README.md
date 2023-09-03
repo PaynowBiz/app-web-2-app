@@ -1,4 +1,6 @@
 # 가맹점APP(Web)에서 페이나우비즈APP 연동을 위한 가이드
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/PaynowBiz/app-web-2-app)](https://github.com/PaynowBiz/app-web-2-app)
+[![토스페이먼츠](https://img.shields.io/badge/토스페이먼츠-blue?style=flat&logoColor=white)](https://www.tosspayments.com)
 
 [1. 개요](#1-개요) <br>
 [2. 암호화 방식 및 위변조 방지](#2-암호화-방식-및-위변조-방지) <br>
