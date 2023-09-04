@@ -29,7 +29,7 @@
 <br>
 
 ## 2. 암호화 방식 및 위변조 방지
-* 암호화 방식<br>
+* [암호화 방식](https://github.com/PaynowBiz/app-web-2-app/blob/main/src/main/java/com/tosspayments/paynowbiz/util/AESUtil.java#L28)<br>
 　➡️ 암호화 알고리즘 : AES-128<br>
 　➡️ 암호화 모드 : ECB<br>
 　➡️ 암호화 패딩 : PKCS5<br>
