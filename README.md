@@ -33,7 +33,7 @@
 　➡️ 암호화 알고리즘 : AES-128<br>
 　➡️ 암호화 모드 : ECB<br>
 　➡️ 암호화 패딩 : PKCS5<br>
-* 위변조 방지<br>
+* [위변조 방지](https://github.com/PaynowBiz/app-web-2-app/blob/main/src/main/java/com/tosspayments/paynowbiz/util/BaseUtil.java#L69)<br>
 　➡️ 해쉬 알고리즘 : SHA-256<br>
 <br>
 
@@ -91,7 +91,7 @@ Entity|Required|Length|Restriction|Description
 |`reserved3`|선택|128|문자|예약필드3|
 |`reserved4`|선택|128|문자|예약필드4|
 |`reserved5`|선택|128|문자|예약필드5|
-||`hmac`|필수|영문,숫자|[_`해쉬 알고리즘을 적용한 값`_]|
+||`hmac`|필수|영문,숫자|[_`해쉬 알고리즘을 적용한 값`_](https://github.com/PaynowBiz/app-web-2-app/blob/main/src/main/java/com/tosspayments/paynowbiz/util/BaseUtil.java#L69)|
 <br>
 
 ## 5-2. 간편취소 `paymentCancel`
@@ -108,7 +108,7 @@ Entity|Required|Length|Restriction|Description
 |`paynowbiz_oid`|필수|18|영문,숫자|PaynowBiz에서 생성한 주문번호|
 |`tid`|필수|24|영문,숫자|TossPayments에서 생성한 거래번호|
 |`callbackurl`|선택|-|문자|`APP`<br>`WEB` 결제취소 후 결제정보를 넘길 콜백URL|
-||`hmac`|필수|영문,숫자|[_`해쉬 알고리즘을 적용한 값`_]|
+||`hmac`|필수|영문,숫자|[_`해쉬 알고리즘을 적용한 값`_](https://github.com/PaynowBiz/app-web-2-app/blob/main/src/main/java/com/tosspayments/paynowbiz/util/BaseUtil.java#L69)|
 <br>
 
 ## 5-3. 일반결제 `payment`
@@ -141,7 +141,7 @@ Entity|Required|Length|Restriction|Description
 |`reserved3`|선택|128|문자|예약필드3|
 |`reserved4`|선택|128|문자|예약필드4|
 |`reserved5`|선택|128|문자|예약필드5|
-||`hmac`|필수|영문,숫자|[_`해쉬 알고리즘을 적용한 값`_]|
+||`hmac`|필수|영문,숫자|[_`해쉬 알고리즘을 적용한 값`_](https://github.com/PaynowBiz/app-web-2-app/blob/main/src/main/java/com/tosspayments/paynowbiz/util/BaseUtil.java#L69)|
 <br>
 
 ## 5-4. 거래내역 `transaction`
@@ -155,7 +155,7 @@ Entity|Required|Length|Restriction|Description
 |`certkey`|필수|16|영문,숫자|인증키|
 |`subid`|필수|11|영문,숫자|영업사원ID|
 |`callbackurl`|선택|-|문자|`APP`<br>`WEB` 콜백URL|
-||`hmac`|필수|영문,숫자|[_`해쉬 알고리즘을 적용한 값`_](dfsf)|
+||`hmac`|필수|영문,숫자|[_`해쉬 알고리즘을 적용한 값`_](https://github.com/PaynowBiz/app-web-2-app/blob/main/src/main/java/com/tosspayments/paynowbiz/util/BaseUtil.java#L69)|
 <br>
 
 
