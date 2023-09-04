@@ -18,7 +18,9 @@
 　[6-1. 간편결제 paymentSimple](#6-1-간편결제-paymentsimple) <br>
 　[6-2. 간편취소 paymentCancel](#6-2-간편취소-paymentcancel) <br>
 　[6-3. 일반결제 payment](#6-3-일반결제-payment) <br>
-　[6-4. 거래내역 transaction](#6-4-거래내역-transaction) <br>
+　[6-5. 응답코드](#6-5-응답코드) <br> 
+　[6-6. 결제수단](#6-6-결제수단) <br> 
+　[6-7. 결제방식](#6-7-결제방식) <br> 
 [7. 연동관련 문의하기](#7-연동관련-문의하기) <br>
 
 ## 1. 개요
@@ -30,7 +32,7 @@
 * 암호화 방식<br>
 　➡️ 암호화 알고리즘 : AES-128<br>
 　➡️ 암호화 모드 : ECB<br>
-　➡️ 암호화 패딩 : PKCS5, PKCS7<br>
+　➡️ 암호화 패딩 : PKCS5<br>
 * 위변조 방지<br>
 　➡️ 해쉬 알고리즘 : SHA-256<br>
 <br>
@@ -71,8 +73,8 @@ Entity|Required|Length|Restriction|Description
 |`reqtype`|필수|5|영문|요청타입(JSON, PARAM)|
 |`partnercd`|선택|128||거래처코드|
 |`partnernm`|선택|128||거래처명|
-||`data`|||<span style="background-color:beige;">_아래 정보를 암호화_</span>|
-|`version`|필수|3|1.0|버전|
+||`data`|||_`아래 정보를 암호화`_|
+|`version`|필수|3|1.0(고정값)|버전|
 |`certkey`|필수|16|영문,숫자|인증키|
 |`subid`|필수|11|영문,숫자|영업사원ID|
 |`name`|필수|20|문자|영업사원명|
@@ -89,7 +91,155 @@ Entity|Required|Length|Restriction|Description
 |`reserved3`|선택|128|문자|예약필드3|
 |`reserved4`|선택|128|문자|예약필드4|
 |`reserved5`|선택|128|문자|예약필드5|
-|`hmac`|필수|-|영문,숫자|해쉬 알고리즘을 적용한 값|
+||`hmac`|필수|영문,숫자|[_`해쉬 알고리즘을 적용한 값`_]|
+<br>
+
+## 5-2. 간편취소 `paymentCancel`
+Entity|Required|Length|Restriction|Description
+|-----|:-----:|-----:|-----|-----|
+|`mertid`|필수|15|영문,숫자|PaynowBiz상점ID|
+|`type`|필수|3|영문|호출타입(APP, WEB)|
+|`reqtype`|필수|5|영문|요청타입(JSON, PARAM)|
+||`data`|||_`아래 정보를 암호화`_|
+|`version`|필수|3|1.0(고정값)|버전|
+|`certkey`|필수|16|영문,숫자|인증키|
+|`subid`|필수|11|영문,숫자|영업사원ID|
+|`oid`|필수|30|영문,숫자|가맹점에서 생성한 주문번호|
+|`paynowbiz_oid`|필수|18|영문,숫자|PaynowBiz에서 생성한 주문번호|
+|`tid`|필수|24|영문,숫자|TossPayments에서 생성한 거래번호|
+|`callbackurl`|선택|-|문자|`APP`<br>`WEB` 결제취소 후 결제정보를 넘길 콜백URL|
+||`hmac`|필수|영문,숫자|[_`해쉬 알고리즘을 적용한 값`_]|
+<br>
+
+## 5-3. 일반결제 `payment`
+Entity|Required|Length|Restriction|Description
+|-----|:-----:|-----:|-----|-----|
+|`mertid`|필수|15|영문,숫자|PaynowBiz상점ID|
+|`type`|필수|3|영문|호출타입(APP, WEB)|
+|`reqtype`|필수|5|영문|요청타입(JSON, PARAM)|
+|`amount_modify`|선택|1|영문|금액변경여부(default : Y)<br>`Y` 변경가능, `N` 변경불가|
+|`partnercd`|선택|128||거래처코드|
+|`partnernm`|선택|128||거래처명|
+||`data`|||_`아래 정보를 암호화`_|
+|`version`|필수|3|1.0(고정값)|버전|
+|`certkey`|필수|16|영문,숫자|인증키|
+|`subid`|필수|11|영문,숫자|영업사원ID|
+|`name`|필수|20|문자|영업사원명|
+|`phone`|선택|11|숫자|영업사원휴대폰번호|
+|`autoreg`|필수|1|영문|영업사원ID자동등록여부<br>`Y`자동등록<br>`N`기등록된상태|
+|`displaytype`|선택|1|숫자|화면유형<br>`0` 금액입력화면, `1` 상품선택화면|
+|`cashpay`|선택|1|영문|현금결제가능여부<br>`Y` 현금결제가능, `N` 현금결제불가|
+|`divisionpayskip`|선택|1|영문|분할결제Skip여부(default : N)<br>`Y` 분할결제불가, `N` 분할결제가능|
+|`memberskip`|선택|1|영문|고객선택화면Skip여부(default : N)<br>`Y` 고객선택안함, `N` 고객선택(스마트팜 상점만 해당)|
+|`amount`|필수|11|숫자|결제금액|
+|`buyer_phone`|선택|11|숫자|구매자연락처|
+|`buyer_email`|선택|128|문자|구매자이메일|
+|`needpaymentinfo`|선택|1|영문|카드승인번호요청여부<br>`Y`reserved5에결제정보전달<br>`N`결제정보 미전달|
+|`callbackurl`|선택|-|문자|`APP`<br>`WEB` 결제완료 후 결제정보를 넘길 콜백URL|
+|`reserved1`|선택|128|문자|예약필드1|
+|`reserved2`|선택|128|문자|예약필드2|
+|`reserved3`|선택|128|문자|예약필드3|
+|`reserved4`|선택|128|문자|예약필드4|
+|`reserved5`|선택|128|문자|예약필드5|
+||`hmac`|필수|영문,숫자|[_`해쉬 알고리즘을 적용한 값`_]|
+<br>
+
+## 5-4. 거래내역 `transaction`
+Entity|Required|Length|Restriction|Description
+|-----|:-----:|-----:|-----|-----|
+|`mertid`|필수|15|영문,숫자|PaynowBiz상점ID|
+|`type`|필수|3|영문|호출타입(APP, WEB)|
+|`reqtype`|필수|5|영문|요청타입(JSON, PARAM)|
+||`data`|||_`아래 정보를 암호화`_|
+|`version`|필수|3|1.0(고정값)|버전|
+|`certkey`|필수|16|영문,숫자|인증키|
+|`subid`|필수|11|영문,숫자|영업사원ID|
+|`callbackurl`|선택|-|문자|`APP`<br>`WEB` 콜백URL|
+||`hmac`|필수|영문,숫자|[_`해쉬 알고리즘을 적용한 값`_](dfsf)|
+<br>
+
+
+## 6. 응답정보
+## 6-1. 간편결제 `paymentSimple`
+Entity|Required|Length|Restriction|Description
+|-----|:-----:|-----:|-----|-----|
+|`respcd`|필수|4|숫자|[응답코드](#6-5-응답코드)|
+|`respmsg`|필수|-|문자|[응답메시지](#6-5-응답코드)|
+|`version`|필수|3|1.0(고정값)|버전|
+|`oid`|필수|30|영문,숫자|가맹점에서 생성한 주문번호|
+|`paynowbiz_oid`|필수|18|영문,숫자|PaynowBiz에서 생성한 주문번호|
+|`amount`|필수|11|숫자|결제금액|
+|`pay_type`|선택|6|영문,숫자|[결제수단](#6-6-결제수단)|
+|`tid`|필수|24|영문,숫자|TossPayments에서 생성한 거래번호|
+|`vbv_eci`|선택|3|숫자|[결제방식](#6-7-결제방식)|
+|`reserved1`|선택|128|문자|예약필드1|
+|`reserved2`|선택|128|문자|예약필드2|
+|`reserved3`|선택|128|문자|예약필드3|
+|`reserved4`|선택|128|문자|예약필드4|
+|`reserved5`|선택|128|문자|예약필드5<br>`needpaymentinfo` = `Y` 일때 카드결제정보<br>{"cardno":"12345678****123",<br>"authno":"12345678",<br>"authdate":"2023-09-04T15:05:22"}|
+<br>
+
+## 6-2. 간편취소 `paymentCancel`
+Entity|Required|Length|Restriction|Description
+|-----|:-----:|-----:|-----|-----|
+|`respcd`|필수|4|숫자|[응답코드](#6-5-응답코드)|
+|`respmsg`|필수|-|문자|[응답메시지](#6-5-응답코드)|
+|`version`|필수|3|1.0(고정값)|버전|
+|`oid`|필수|30|영문,숫자|가맹점에서 생성한 주문번호|
+|`paynowbiz_oid`|필수|18|영문,숫자|PaynowBiz에서 생성한 주문번호|
+|`amount`|필수|9|숫자|결제취소금액|
+|`tid`|필수|24|영문,숫자|TossPayments에서 생성한 거래번호|
+<br>
+
+## 6-3. 일반결제 `payment`
+Entity|Required|Length|Restriction|Description
+|-----|:-----:|-----:|-----|-----|
+|`respcd`|필수|4|숫자|[응답코드](#6-5-응답코드)|
+|`respmsg`|필수|-|문자|[응답메시지](#6-5-응답코드)|
+|`version`|필수|3|1.0(고정값)|버전|
+|`oid`|필수|30|영문,숫자|가맹점에서 생성한 주문번호|
+|`paynowbiz_oid`|필수|18|영문,숫자|PaynowBiz에서 생성한 주문번호|
+|`amount`|필수|11|숫자|결제금액|
+|`pay_type`|선택|6|영문,숫자|[결제수단](#6-6-결제수단)|
+|`pay_plan_yn`|선택|1|영문|분할결제여부(Y,N)|
+|`pay_plan_list`|선택|-|문자|분할결제여부 = `Y`<br>(구분자 '|')|
+||`pay_type`|6|영문,숫자|[결제수단](#6-6-결제수단)|
+||`tid`|24|영문,숫자|TossPayments에서 생성한 거래번호|
+||`amount`|9|숫자|결제금액|
+||`vbv_eci`|3|숫자|[결제방식](#6-7-결제방식)|
+|`tid`|필수|24|영문,숫자|TossPayments에서 생성한 거래번호|
+|`vbv_eci`|선택|3|숫자|[결제방식](#6-7-결제방식)|
+|`reserved1`|선택|128|문자|예약필드1|
+|`reserved2`|선택|128|문자|예약필드2|
+|`reserved3`|선택|128|문자|예약필드3|
+|`reserved4`|선택|128|문자|예약필드4|
+|`reserved5`|선택|128|문자|예약필드5<br>`needpaymentinfo` = `Y` 일때 카드결제정보<br>{"cardno":"12345678****123",<br>"authno":"12345678",<br>"authdate":"2023-09-04T15:05:22"}|
+<br>
+
+## 6-5. 응답코드
+Code|Description
+|-----|-----|
+|`0000`|결제(취소)성공|
+|`0100`|사용자취소|
+|`1000`|인증실패|
+|`1001`|결제실패|
+|`2000`|필수값누락|
+|`9999`|정의되지않은에러|
+<br>
+
+## 6-6. 결제수단
+Code|Description
+|-----|-----|
+|`SC0010`|카드결제|
+|`SC0100`|현금결제|
+<br>
+
+## 6-7. 결제방식
+Code|Description
+|-----|-----|
+|`010`|key-in|
+|`020`|swipe|
+|`030`|IC Chip|
 <br>
 
 ## 7. 연동관련 문의하기
