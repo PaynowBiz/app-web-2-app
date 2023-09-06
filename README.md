@@ -201,8 +201,8 @@ Entity|Required|Length|Restriction|Description
 |`paynowbiz_oid`|필수|18|영문,숫자|PaynowBiz에서 생성한 주문번호|
 |`amount`|필수|11|숫자|결제금액|
 |`pay_type`|선택|6|영문,숫자|[결제수단](#6-6-결제수단)|
-|`pay_plan_yn`|선택|1|영문|분할결제여부(Y,N)|
-|`pay_plan_list`|선택|-|문자|분할결제여부 = `Y`<br>(구분자 '|')|
+|`pay_plan_yn`|선택|1|영문,숫자|분할결제여부<br> Android : (Y,N)<br>iOS : (1,0)|
+|`pay_plan_list`|선택|-|문자|분할결제여부 = `Y` or `1` 일때<br>Android : `pay_type:tid:amount:vbv_eci`<br>iOS : `[{pay_type, tid, amount, vbv_eci}]`|
 ||`pay_type`|6|영문,숫자|[결제수단](#6-6-결제수단)|
 ||`tid`|24|영문,숫자|TossPayments에서 생성한 거래번호|
 ||`amount`|9|숫자|결제금액|
