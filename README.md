@@ -61,7 +61,7 @@ ex) **`APP`**://paynowbiz.tosspayments.com/**`url`**/mertid=&type=&reqtype=&part
     2. 간편취소 : [http://localhost:8080/app/cancel](http://localhost:8080/app/cancel)
     3. 일반결제 : [http://localhost:8080/app/normal](http://localhost:8080/app/normal)
     4. 거래내역 : [http://localhost:8080/app/transaction](http://localhost:8080/app/transaction)
- 3) [Construct.java](https://github.com/PaynowBiz/app-web-2-app/blob/main/src/main/java/com/tosspayments/paynowbiz/util/Constuct.java) 에서 연동 하고자 하는 `url` 로 설정값을 변경해서 호출 하면 됩니다.
+ 3) [Construct.java](https://github.com/PaynowBiz/app-web-2-app/blob/main/src/main/java/com/tosspayments/paynowbiz/util/Construct.java) 에서 연동 하고자 하는 `url` 로 설정값을 변경해서 호출 하면 됩니다.
 <br>
 
 ## 5. 요청정보
