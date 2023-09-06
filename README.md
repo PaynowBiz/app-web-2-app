@@ -199,16 +199,16 @@ Entity|Required|Length|Restriction|Description
 |`version`|필수|3|1.0(고정값)|버전|
 |`oid`|필수|30|영문,숫자|가맹점에서 생성한 주문번호|
 |`paynowbiz_oid`|필수|18|영문,숫자|PaynowBiz에서 생성한 주문번호|
-|`amount`|필수|11|숫자|결제금액|
 |`pay_type`|선택|6|영문,숫자|[결제수단](#6-6-결제수단)|
+|`tid`|필수|24|영문,숫자|TossPayments에서 생성한 거래번호|
+|`amount`|필수|9|숫자|결제금액|
+|`vbv_eci`|선택|3|숫자|[결제방식](#6-7-결제방식)|
 |`pay_plan_yn`|선택|1|영문,숫자|분할결제여부<br> Android : `Y`, `N`<br>iOS : `1`, `0`|
 |`pay_plan_list`|선택|-|문자|분할결제여부 = `Y` or `1` 일때<br>Android : `pay_type:tid:amount:vbv_eci`<br>iOS : `[{pay_type, tid, amount, vbv_eci}]`|
 ||`pay_type`|6|영문,숫자|[결제수단](#6-6-결제수단)|
 ||`tid`|24|영문,숫자|TossPayments에서 생성한 거래번호|
 ||`amount`|9|숫자|결제금액|
 ||`vbv_eci`|3|숫자|[결제방식](#6-7-결제방식)|
-|`tid`|필수|24|영문,숫자|TossPayments에서 생성한 거래번호|
-|`vbv_eci`|선택|3|숫자|[결제방식](#6-7-결제방식)|
 |`reserved1`|선택|128|문자|예약필드1|
 |`reserved2`|선택|128|문자|예약필드2|
 |`reserved3`|선택|128|문자|예약필드3|
