@@ -47,8 +47,8 @@ ex) **`APP`**://paynowbiz.tosspayments.com/**`url`**/mertid=&type=&reqtype=&part
 |**`mertid`**|PaynowBiz 상점ID|
 |**`type`**|`APP` App에서 넘기는 경우<br>`WEB` Web에서 넘기는 경우|
 |**`reqtype`**|`JSON` 요청정보를 json으로 넘기는 경우<br>`PARAM` 요청정보를 get방식으로 넘기는 경우|
-|**`partnercd`**|거래처코드를 넘기는 경우|
-|**`partnernm`**|거래처명을 넘기는 경우|
+|**`partnercd`**|거래처코드를 넘기는 경우(스마트팜상점)|
+|**`partnernm`**|거래처명을 넘기는 경우(스마트팜상점)|
 |**`data`**|나머지 요청 정보를 암호화 한 값|
 |**`hmac`**|**`url`** 별 해쉬 알고리즘을 적용한 값|
 <br>
