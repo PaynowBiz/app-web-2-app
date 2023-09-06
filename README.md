@@ -38,7 +38,7 @@
 <br>
 
 ## 3. URL스키마
-* **`APP`**://paynowbiz.tosspayments.com/**`url`**/mertid=&type=&reqtype=&partnercd=&partnernm=&data=&hmac=<br>
+ex) **`APP`**://paynowbiz.tosspayments.com/**`url`**/mertid=&type=&reqtype=&partnercd=&partnernm=&data=&hmac=<br>
 
 |Entity|Description|
 |-----|:-----|
