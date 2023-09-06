@@ -73,7 +73,7 @@ Entity|Required|Length|Restriction|Description
 |`reqtype`|필수|5|영문|요청타입(JSON, PARAM)|
 |`partnercd`|선택|128||거래처코드|
 |`partnernm`|선택|128||거래처명|
-||`data`|||_`아래 정보를 암호화`_|
+||`data`|||[_`아래 정보를 암호화`_](https://github.com/PaynowBiz/app-web-2-app/blob/main/src/main/java/com/tosspayments/paynowbiz/util/AESUtil.java#L28)|
 |`version`|필수|3|1.0(고정값)|버전|
 |`certkey`|필수|16|영문,숫자|인증키|
 |`subid`|필수|11|영문,숫자|영업사원ID|
