@@ -50,7 +50,7 @@ ex) **`APP`**://paynowbiz.tosspayments.com/**`url`**/mertid=&type=&reqtype=&part
 |**`partnercd`**|거래처코드를 넘기는 경우|
 |**`partnernm`**|거래처명을 넘기는 경우|
 |**`data`**|나머지 요청 정보를 암호화 한 값|
-|**`hmac`**|**`url`**별 해쉬 알고리즘을 적용한 값|
+|**`hmac`**|**`url`** 별 해쉬 알고리즘을 적용한 값|
 <br>
 
 ## 4. 시작하기
