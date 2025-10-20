@@ -1,5 +1,4 @@
 # 가맹점APP(Web)에서 페이나우비즈APP 연동 가이드
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/PaynowBiz/app-web-2-app)](https://github.com/PaynowBiz/app-web-2-app)
 [![토스페이먼츠](https://img.shields.io/badge/토스페이먼츠-blue?style=flat&logoColor=white)](https://www.tosspayments.com)
 [![페이나우비즈](https://img.shields.io/badge/페이나우비즈-bluesky?style=flat&logoColor=white)](https://paynowbiz.tosspayments.com)
 ![JAVA](https://img.shields.io/badge/Java%20v1.8-6DB33F?style=flat&logo=OpenJDK&logoColor=white)
